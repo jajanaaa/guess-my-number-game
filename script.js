@@ -1,9 +1,10 @@
 'use strict';
 
 // Create random number betwen 1 and 20
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // Change score
+let guess;
 let score = 20;
 
 // Select guess value
@@ -12,7 +13,7 @@ console.log(secretNumber);
 
 // Check number function
 function checkNumber() {
-  const guess = Number(document.querySelector('.guess').value);
+  guess = Number(document.querySelector('.guess').value);
   console.log(guess);
   if (!guess) {
     document.querySelector('.message').textContent = 'No number! 🚫';
@@ -43,3 +44,15 @@ function checkNumber() {
 }
 //Select button and add event listener
 document.querySelector('.check').addEventListener('click', checkNumber);
+
+// Again button - reset function
+document.querySelector('.again').addEventListener('click', function () {
+  document.querySelector('.guess').value = '';
+  score = 20;
+  document.querySelector('.score').textContent = score;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
+});
