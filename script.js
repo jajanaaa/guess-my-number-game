@@ -6,6 +6,7 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 // Change score
 let guess;
 let score = 20;
+let highscore = 0;
 
 // Select guess value
 
@@ -22,6 +23,11 @@ function checkNumber() {
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
   } else if (guess < secretNumber) {
     if (score >= 1) {
       document.querySelector('.message').textContent = 'Number is too low!';
